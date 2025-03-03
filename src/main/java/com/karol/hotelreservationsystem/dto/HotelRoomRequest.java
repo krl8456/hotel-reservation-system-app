@@ -19,7 +19,6 @@ public class HotelRoomRequest {
     @NotBlank(message = "{room-number.required}")
     private String roomNumber;
     private boolean available;
-    @NotBlank(message = "{capacity.required}")
     @Digits(integer = 2, fraction = 0, message = "{capacity.size}")
     private int capacity;
 }

@@ -92,8 +92,13 @@ public class AuthenticationService {
     }
 
     public User getCurrentUser() {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
 
-        return user;
+    public User getUserByToken(String token) {
+        String email = jwtService.extractEmail(token);
+
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
     }
 }

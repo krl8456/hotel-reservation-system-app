@@ -1,5 +1,7 @@
 package com.karol.hotelreservationsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,6 +40,7 @@ public class User implements UserDetails {
     private Instant createdAt;
     @UpdateTimestamp
     private Instant updatedAt;
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Token> tokens;
 
