@@ -8,7 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,7 +23,6 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-@Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final UserAccountDetailsService userAccountDetailsService;
@@ -43,7 +43,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                     authenticateUser(email, token, request);
                 }, () -> {
-                    log.info("No authorization header found or it does not start with the expected prefix.");
+//                    log.info("No authorization header found or it does not start with the expected prefix.");
+                    LoggerFactory.getLogger(JwtAuthenticationFilter.class).info("No authentication token found");
                 });
 
         filterChain.doFilter(request, response);
