@@ -1,5 +1,8 @@
 package com.karol.hotelreservationsystem.factory;
-
+// Tydzień 1, Wzorzec singleton 2
+// Użycie wzorca singleton gwarantuje, że w aplikacji będzie tylko jedna instancja danej klasy
+// W tym przypadku korzystając z singletona możemy poprawić wydajność aplikacji oraz zunifikować konfiguracje logowania
+// Tydzień 1, Wzorzec singleton 2
 public class InfoLogger extends Logger{
     private InfoLogger() {}
 
