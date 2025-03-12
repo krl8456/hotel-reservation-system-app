@@ -1,5 +1,4 @@
 package com.karol.hotelreservationsystem.factory;
-
 public class ErrorLogger extends Logger{
     private static final ErrorLogger instance = new ErrorLogger();
 
