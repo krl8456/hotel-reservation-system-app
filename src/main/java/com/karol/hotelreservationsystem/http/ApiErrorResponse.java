@@ -10,6 +10,10 @@ import lombok.Setter;
 public class ApiErrorResponse<T> {
     private ApiErrorResponseMessageDetails<T> error;
 
+    // Tydzień 1, Wzorzec fabryka 2
+    // W tym przypadku jest przedstawiona implementacja tzw. fabryki statycznej za pomocą metody
+    // statycznej of. Upraszcza ona tworzenie obiektów oraz dodaje dzięki nazwie pewnych informacji jak dany obiekt jest tworzony.
+    // Koniec, Tydzień 1, Wzorzec fabryka 2
     public static <T> ApiErrorResponse<T> of(int code, String message, T details) {
         ApiErrorResponseMessageDetails<T> errorDetails = new ApiErrorResponseMessageDetails<>(code, message, details);
 

@@ -33,6 +33,10 @@ public class ApiResponse<T>{
         this.message = message;
     }
 
+    // Tydzień 1, Wzorzec fabryka 3
+    // W tym przypadku jest przedstawiona implementacja tzw. fabryki statycznej za pomocą metod
+    // statycznych withData, withLocation, withNoContent. Upraszcza ona tworzenie obiektów oraz dodaje dzięki nazwie pewnych informacji jak dany obiekt jest tworzony.
+    // Koniec, Tydzień 1, Wzorzec fabryka 3
     public static <T> ApiResponse<T> withData(int code, String message, T data) {
         return new ApiResponse<>(code, message, data);
     }
