@@ -14,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "cities")
-//@Builder
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +35,10 @@ public class City {
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Hotel> hotels = new ArrayList<>();
 
-    // Poprzednio wzorzec Builder został zaimplementowany przy pomocy adnotacji @Builder z biblioteki Lombok
+    // Tydzień 1, Wzorzec Builder 2
+    // Jest to wzorzec konstrukcyjny umożliwiający tworzenie obiektów, przydatny gdy z góry nie wiemy ile będziemy inicjalizować
+    // pól w przypadku inicjalizacji. Bez tego musielibyśmy tworzyć wszystkie możliwe konstruktory co nie było by komfortowe
+    // Koniec, Tydzień 1, Wzorzec Builder 2
     public static CityBuilder builder() {
         return new CityBuilder();
     }

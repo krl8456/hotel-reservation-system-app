@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @Entity
 @ToString
 @Table(name = "reservations")
-//@Builder
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +44,11 @@ public class Reservation {
     @JsonIgnore
     private Hotel hotel;
 
-    // Poprzednio wzorzec Builder został zaimplementowany przy pomocy adnotacji @Builder z biblioteki Lombok
+
+    // Tydzień 1, Wzorzec Builder 3
+    // Jest to wzorzec konstrukcyjny umożliwiający tworzenie obiektów, przydatny gdy z góry nie wiemy ile będziemy inicjalizować
+    // pól w przypadku inicjalizacji. Bez tego musielibyśmy tworzyć wszystkie możliwe konstruktory co nie było by komfortowe
+    // Koniec, Tydzień 1, Wzorzec Builder 3
     public static ReservationBuilder builder() {
         return new ReservationBuilder();
     }
