@@ -1,18 +1,15 @@
 package com.karol.hotelreservationsystem.factory;
 
-import org.springframework.stereotype.Component;
-
 public class LoggerFactory {
-    public static Logger getLogger(String someClass, String type) {
-        Logger logger = null;
+    public static Logger getLogger(String type) {
         if (type.equals("ERROR")) {
-            return InfoLogger.getInstance(someClass);
+            return ErrorLogger.getInstance();
         }
         else if (type.equals("WARN")) {
-            return WarningLogger.getInstance(someClass);
+            return WarningLogger.getInstance();
         }
         else {
-            return ErrorLogger.getInstance(someClass);
+            return InfoLogger.getInstance();
         }
     }
 }

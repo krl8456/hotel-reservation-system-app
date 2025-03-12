@@ -1,19 +1,19 @@
 package com.karol.hotelreservationsystem.factory;
 
 public class WarningLogger extends Logger{
-    private static final WarningLogger instance = new WarningLogger();
-
-    private WarningLogger(String someClass) {
-        super(someClass);
-    }
+    private static final WarningLogger instance;
 
     private WarningLogger() {}
 
-    public static WarningLogger getInstance(String someClass) {
-        return new WarningLogger(someClass);
+    static {
+        instance = new WarningLogger();
+    }
+
+    public static WarningLogger getInstance() {
+        return instance;
     }
 
     public void log(String message) {
-        log.info(message);
+        log.warn(message);
     }
 }

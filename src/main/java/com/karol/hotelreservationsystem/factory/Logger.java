@@ -10,4 +10,12 @@ public class Logger {
     protected Logger(String someClass) {
         Logger.someClass = someClass;
     }
+
+    protected static void setSomeClass(String someClass) {
+        Logger.someClass = someClass;
+    }
+
+    protected static String getSomeClass() {
+        return someClass;
+    }
 }
