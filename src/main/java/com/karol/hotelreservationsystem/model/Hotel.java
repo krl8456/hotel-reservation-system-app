@@ -36,6 +36,16 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<HotelRoom> hotel_rooms = new ArrayList<>();
 
+    // Tydzień 1, Wzorzec Prototype 1
+    // Wzorzec ten został użyty w projekcie aby uniknąć kosztowenej inicjalizacji przy pobieraniu danych
+    // Koniec Tydzień 1, Wzorzec Prototype 1
+    @Override
+    public Hotel clone() throws CloneNotSupportedException {
+        Hotel clonedHotel = (Hotel) super.clone();
+        clonedHotel.hotel_rooms = new ArrayList<>(this.hotel_rooms);
+        return clonedHotel;
+    }
+
     public Hotel(String name, String address, int starRating, City city) {
         this.name = name;
         this.address = address;

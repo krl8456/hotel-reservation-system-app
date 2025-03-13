@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @Data
 @NoArgsConstructor
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 @Entity
 @ToString
 @Table(name = "reservations")
-public class Reservation {
+public class Reservation implements Cloneable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -44,6 +45,13 @@ public class Reservation {
     @JsonIgnore
     private Hotel hotel;
 
+    // Tydzień 1, Wzorzec Prototype 2
+    // Wzorzec ten został użyty w projekcie aby uniknąć kosztowenej inicjalizacji przy pobieraniu danych
+    // Koniec Tydzień 2, Wzorzec Prototype 2
+    @Override
+    public Reservation clone() throws CloneNotSupportedException {
+        return (Reservation) super.clone();
+    }
 
     // Tydzień 1, Wzorzec Builder 3
     // Jest to wzorzec konstrukcyjny umożliwiający tworzenie obiektów, przydatny gdy z góry nie wiemy ile będziemy inicjalizować

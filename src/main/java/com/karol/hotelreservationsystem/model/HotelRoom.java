@@ -17,7 +17,7 @@ import java.util.List;
 @ToString
 @Table(name = "hotel_rooms")
 //@Builder
-public class HotelRoom {
+public class HotelRoom implements Cloneable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,6 +40,16 @@ public class HotelRoom {
         this.capacity = capacity;
         this.available = available;
         this.hotel = hotel;
+    }
+
+    // Tydzień 1, Wzorzec Prototype 2
+    // Wzorzec ten został użyty w projekcie aby uniknąć kosztowenej inicjalizacji przy pobieraniu danych
+    // Koniec Tydzień 2, Wzorzec Prototype 2
+    @Override
+    public HotelRoom clone() throws CloneNotSupportedException {
+        HotelRoom clonedRoom = (HotelRoom) super.clone();
+        clonedRoom.reservations = new ArrayList<>(this.reservations);
+        return clonedRoom;
     }
 
     // Poprzednio wzorzec Builder został zaimplementowany przy pomocy adnotacji @Builder z biblioteki Lombok
